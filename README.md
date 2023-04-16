@@ -20,3 +20,6 @@ pandas
 sklearn
 plotly
 wordcloud
+```bash
+$ pip install natasha
+```
