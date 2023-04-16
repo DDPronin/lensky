@@ -47,5 +47,7 @@ $ pip install wordcloud
 ```python
 >>> from Lensky.lensky import *
 
->>> corpus = Corpus(path) # например 'data/corpus_ru'
+>>> corpus = Corpus(path_to_folder) # например 'data/corpus_ru'
 ```
+
+Элементы в папке по адресу path_to_folder должны быть формата .txt и названы по тому же шаблону, что и элементы в data/corpus_ru, то есть, key.subkey.year
