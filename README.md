@@ -67,13 +67,13 @@ $ pip install wordcloud
 ```python
 >>> corpus.get(address) #например [0, 0] или [0]
 ```
-
+<br/>
 .keys() - вернет все key корпуса в виде списка.
 
 ```python
 >>> corpus.keys()
 ```
-
+<br/>
 .values() - вернет все values корпуса в виде списка.
 
 ```python
