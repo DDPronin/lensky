@@ -205,7 +205,7 @@ model_fit(cent_tfidf, mapper) # обучим ее на данных
 plot_by_keys(cent_tfidf, mapper, figsize=(10, 10), dpi=150, title='Отображение UMAP произведений по векам', legend_title='Век') # построим график
 ```
 
-![alt tag](https://github.com/DDPronin/lensky/blob/main/images/UMAP_Gogol.png)
+![alt tag](https://github.com/DDPronin/lensky/blob/main/images/UMAP_cents.png)
 
 plot_by_subkeys(corpus, target, model, colors, labels, point_size, alpha, title, legend_title, grid, figsize, dpi) - построение графика по объекту key и его subkeys "на фоне" всего корпуса. Аргументы: corpus - векторизованный корпус (объект Corpus), target - выделяемый key, model - предобученная модель для уменьшения размерности, colors - цвета точек (заданы по умолчанию, но можно изменить), labels - подписи, отображаемые в легенде (заданы по умолчанию, но можно изменить), point_size - размер точки (задан по умолчанию, но можно изменить), alpha - прозрачность точки (задана пор умолчанию, но можно изменить), title - подпись графика, legend_title - подпись легенды графика, grid - сетка (вкл./выкл True/False), figsize, dpi - настройки фигуры графика, соотвествуют настройкам из matplotlib
 
@@ -217,6 +217,8 @@ model_fit(corpus_tfidf, mapper) # обучим ее на данных
 
 plot_by_subkeys(author_tfidf, 'Гоголь', mapper, figsize=(10, 10), dpi=250, point_size=14, legend_title='Произведения автора') # построение графика
 ```
+
+![alt tag](https://github.com/DDPronin/lensky/blob/main/images/UMAP_Gogol.png)
 
 plot_interactive(corpus, model, data_key, data_subkey) - постройка анимированного графика по корпусу. Аргументы: corpus - векторизованный корпус (объект Corpus), model - предобученная модель для уменьшения размерности, data_key, data_subkey - подписи для легенды.
 
