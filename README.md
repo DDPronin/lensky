@@ -38,4 +38,36 @@ $ pip install plotly
 $ pip install wordcloud
 ```
 # Работа с Lensky
-Основным объектом в Lensky является Corpus. Corpus - словарь, состоящий из словарей и функции для их обработки и быстрому доступу к элементам. Corpus {key1 : {subkey1 : element1, subkey2 : element2...}...}
+Основным объектом в Lensky является Corpus. Corpus - словарь, состоящий из словарей и функции для их обработки и быстрому доступу к элементам. 
+
+<br/>Corpus {key1 : {subkey1 : element1, subkey2 : element2...}...}
+
+```python
+>>> from natasha import (
+    Segmenter,
+    MorphVocab,
+    
+    NewsEmbedding,
+    NewsMorphTagger,
+    NewsSyntaxParser,
+    NewsNERTagger,
+    
+    PER,
+    NamesExtractor,
+
+    Doc
+)
+
+
+>>> segmenter = Segmenter()
+>>> morph_vocab = MorphVocab()
+
+>>> emb = NewsEmbedding()
+>>> morph_tagger = NewsMorphTagger(emb)
+>>> syntax_parser = NewsSyntaxParser(emb)
+>>> ner_tagger = NewsNERTagger(emb)
+
+>>> names_extractor = NamesExtractor(morph_vocab)
+'
+>>> doc = Doc(text)
+```
