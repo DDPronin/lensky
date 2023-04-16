@@ -255,8 +255,8 @@ class Corpus:
             print('Done!')
             return Corpus(corpus=out)
 
-    def nearest_neighbours(self, target, n, model=None):
-        neigh = NearestNeighbors(n_neighbors=n + 1)
+    def nearest_neighbours(self, target, n, metric='minkowski', model=None):
+        neigh = NearestNeighbors(n_neighbors=n + 1, metric=metric)
         vecs = []
         print('Processing...')
         for author in tqdm.tqdm(self.keys()):
@@ -424,6 +424,7 @@ def moving_window(a, n):
 
 
 def sentiment_plot(book, window=1, plot_type=None, title='TITLE', zero_level=True, grid=True, figsize=(12, 6), dpi=150):
+    figure(figsize=figsize, dpi=dpi)
     if plot_type == None:
         sentiments = ['neutral', 'positive', 'negative', 'speech']
     if type(plot_type) == list:
@@ -502,6 +503,7 @@ def sentiment_plot(book, window=1, plot_type=None, title='TITLE', zero_level=Tru
 
 
 def morph_plot(book, window, plot_type, title='TITLE', grid=True, figsize=(12, 6), dpi=150):
+    figure(figsize=figsize, dpi=dpi)
     if type(plot_type) != list:
         raise Exception("plot_type should be list")
     navec = Navec.load('models//navec_news_v1_1B_250K_300d_100q.tar')
@@ -530,11 +532,11 @@ def morph_plot(book, window, plot_type, title='TITLE', grid=True, figsize=(12, 6
         plt.grid()
 
 
-def plot_wordcloud(text, stopwords=[]):
+def plot_wordcloud(book, stopwords=[]):
     # Set figure size
     plt.figure(figsize=(40, 30))
     # Display image
-    wordcloud = WordCloud(width= 3000, height = 2000, random_state=1, background_color='salmon', colormap='Pastel1', collocations=False, stopwords=stopwords).generate(text)
+    wordcloud = WordCloud(width= 3000, height = 2000, random_state=1, background_color='salmon', colormap='Pastel1', collocations=False, stopwords=stopwords).generate(book)
     plt.imshow(wordcloud) 
     # No axis details
     plt.axis("off")
