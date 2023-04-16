@@ -126,6 +126,7 @@ corpus.low_pop_drop(lim=0.001, replace=True) # заменит элементы s
 ```
 
 .vectorize(vectorizer, replace) - проведет векторизацию каждого subvalue элемента корпуса переданным в vectorizer векторайзером. Если replace=False вернет новый объект корпуса, оставив старый без изменений, если replace=True, изменит оригинальный корпус, к которому применен метод. По умолчанию replace=False.
+
 Применение Count Vectorizer:
 ```python
 from sklearn.feature_extraction.text import CountVectorizer
