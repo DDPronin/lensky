@@ -289,6 +289,8 @@ text = corp['Лермонтов']['Лермонтов.Герой_нашего_в
 sentiment_plot(text, plot_type='sentiment', window=200, title='', grid=True, zero_level=False)
 ```
 
+![alt tag](https://github.com/DDPronin/lensky/blob/main/images/ton.png)
+
 morph_plot(book, window, plot_type, title, grid, figsize, dpi) - функция для построения графика долей частей речи в тексте. Аргументы: book - строка str, содержащая текст книги, window - размер окна (см. прикрепленную статью), plot_type - можно задать список list с элементами из множества ['ADJ', 'ADP', 'ADV', 'AUX', 'CCONJ', 'DET', 'INTJ', 'NOUN', 'NUM', 'PART', 'PRON', 'PROPN', 'PUNCT', 'SCONJ', 'SYM', 'VERB', 'X']. Примеры: plot_type = ['ADJ', 'PART] - будут построены графики соотвествующих частей речи. Аргумент grid - сетка (вкл./выкл True/False), figsize, dpi - настройки фигуры графика, соотвествуют настройкам из matplotlib
 
 ```python
@@ -301,6 +303,8 @@ text = corp['Лермонтов']['Лермонтов.Герой_нашего_в
 morph_plot(text, plot_type=['VERB'], window=500, title='Глаголы в произведении "Герой нашего времени"', grid=True)
 ```
 
+![alt tag](https://github.com/DDPronin/lensky/blob/main/images/verb.png)
+
 plot_wordcloud(book, stopwords) - строит облако слов произведения. book - строка str, содержащая текст книги. Слова из списка stop_words будут удалены из текста.
 
 ```python
@@ -312,6 +316,9 @@ text = corp['Лермонтов']['Лермонтов.Герой_нашего_в
 
 plot_wordcloud(text, stopwords=stopwords)
 ```
+
+![alt tag](https://github.com/DDPronin/lensky/blob/main/images/cloud.png)
+
 
 
 
