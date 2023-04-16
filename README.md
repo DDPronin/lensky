@@ -172,6 +172,39 @@ get_principal_numbers(num) - получить num значений компон�
 >>> vector.get_principal_numbers(num=10)
 ```
 
+<br/> Функции для работы с корпусом:
+
+plot_by_keys(corpus_yfidf, model, colors, labels, point_size, alpha, title=,
+                       legend_title=, grid, figsize, dpi) - построение графика по ключам keys. На графике будут выделены цветами keys.
+
+```python
+import umap
+
+def cent(year): # функция для определения века написания
+    if year < 1801:
+        return 18
+    if year >= 1801 and year < 1901:
+        return 19
+    if year >= 1901 and year < 2001:
+        return 20
+    if year >= 2001:
+        return 21
+        
+cent_tfidf = Corpus(corpus={18 : {}, 19 : {}, 20 : {}, 21 : {}}) # создадим новый корпус, где ключами будут не авторы, а века написания книгши
+
+for key in corp.keys(): # определим века наипсания
+    for subkey in author_tfidf[key].keys():
+        year = int(subkey.split('.')[-1])
+        cent_tfidf[cent(year)][subkey] = author_tfidf[key][subkey]
+       
+
+mapper = umap.UMAP() # создадим модель UMAP для уменьшения размерности
+model_fit(cent_tfidf, mapper) # обучим ее на данных
+
+plot_by_keys(cent_tfidf, mapper, figsize=(10, 10), dpi=150, title='Отображение UMAP произведений по векам', legend_title='Век') # построим график
+```
+                       
+
 <br/> Функции для работы с векторами:
 
 vsum([vector1, vector2...]) - найдет векторную сумму списка [vector1, vector2...]
