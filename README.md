@@ -286,7 +286,7 @@ corpus = Corpus('data/corpus_ru')
 
 text = corp['Лермонтов']['Лермонтов.Герой_нашего_времени.1840']
 
-sentiment_plot(text, plot_type='sentiment', window=200, title='', grid=True, zero_level=False)
+sentiment_plot(text, plot_type='pos-neg', window=200, grid=True, zero_level=False, title='Эмоциональная тональность "Героя нашего времени"', figsize=(8, 5), dpi=150)
 ```
 
 ![alt tag](https://github.com/DDPronin/lensky/blob/main/images/ton.png)
