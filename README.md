@@ -103,7 +103,7 @@ $ pip install wordcloud
 ```python
 >>> corpus2 = corpus.apply(len, replace=False) # создаст новый объект corpus2 без потери старого, в котором будут содержаться длины каждого элементы subvalue
 # ИЛИ
->>>corpus.apply(len, replace=True) # заменит элементы subvalue корпуса на значения их длин
+>>> corpus.apply(len, replace=True) # заменит элементы subvalue корпуса на значения их длин
 ```
 
 .save(path_to_folder) - сохранит корпус по указанному пути в формате data/corpus_ru.
@@ -117,7 +117,7 @@ $ pip install wordcloud
 ```python
 >>> corpus2 = corpus.tokenize(stop_words=['я', 'мы', 'ты', 'вы', 'он' , 'она', 'оно', 'они'], replace=False) # создаст новый объект corpus2 без потери старого, в котором будут содержаться токенизированные элементы subvalue
 # ИЛИ
->>>corpus.tokenize(stop_words=['я', 'мы', 'ты', 'вы', 'он' , 'она', 'оно', 'они'], replace=True) # заменит элементы subvalue корпуса на их токены
+>>> corpus.tokenize(stop_words=['я', 'мы', 'ты', 'вы', 'он' , 'она', 'оно', 'они'], replace=True) # заменит элементы subvalue корпуса на их токены
 ```
 
 .normalize(stop_words, replace) - проведет нормализацию (лемматизацию) каждого subvalue элемента корпуса. Слова из списка stop_words будут удалены из текстов. По умолчанию список stop_words пуст. Если replace=False вернет новый объект корпуса, оставив старый без изменений, если replace=True, изменит оригинальный корпус, к которому применен метод. По умолчанию replace=False. Для этой операции корпус должен быть токенезирован методом .tokenize().
@@ -125,7 +125,7 @@ $ pip install wordcloud
 ```python
 >>> corpus2 = corpus.normalize(stop_words=['я', 'мы', 'ты', 'вы', 'он' , 'она', 'оно', 'они'], replace=False) # создаст новый объект corpus2 без потери старого, в котором будут содержаться лемматизированные элементы subvalue
 # ИЛИ
->>>corpus.normalize(stop_words=['я', 'мы', 'ты', 'вы', 'он' , 'она', 'оно', 'они'], replace=True) # заменит элементы subvalue корпуса на их нормальную форму
+>>> corpus.normalize(stop_words=['я', 'мы', 'ты', 'вы', 'он' , 'она', 'оно', 'они'], replace=True) # заменит элементы subvalue корпуса на их нормальную форму
 ```
 
 .low_pop_drop(lim, replace) - удалит из текстов слова, доля которых в произведениях меньше, чем lim (рекомендуемое lim<0.001). Если replace=False вернет новый объект корпуса, оставив старый без изменений, если replace=True, изменит оригинальный корпус, к которому применен метод. По умолчанию replace=False. Для этой операции корпус должен быть токенезирован методом .tokenize() и нормализирован методом .normalize().
@@ -133,7 +133,7 @@ $ pip install wordcloud
 ```python
 >>> corpus2 = corpus.low_pop_drop(lim=0.001, replace=False) # создаст новый объект corpus2 без потери старого, в котором будут содержать слова элементов subvalues, прошедшие через фильтр
 # ИЛИ
->>>corpus.low_pop_drop(lim=0.001, replace=True) # заменит элементы subvalue корпуса на эти слова
+>>> corpus.low_pop_drop(lim=0.001, replace=True) # заменит элементы subvalue корпуса на эти слова
 ```
 
 .vectorize(vectorizer, replace) - проведет векторизацию каждого subvalue элемента корпуса переданным в vectorizer векторайзером. Если replace=False вернет новый объект корпуса, оставив старый без изменений, если replace=True, изменит оригинальный корпус, к которому применен метод. По умолчанию replace=False.
@@ -162,13 +162,18 @@ $ pip install wordcloud
 ```python
 >>> from sklearn.feature_extraction.text import TfidfVectorizer
 
->>> tfidf = TfidfVectorizer(use_idf=False)
+>>> tfidf = TfidfVectorizer(use_idf=true)
 
 >>> corpus_tfidf = corp.vectorize(tfidf, replace=False)
 ```
 
 
-.nearest_neighbours(target, n, model) - найдет n ближайших соседей (по метрике Евклида) элемента, subvalue которого равно target в векторном пространстве порожденном векторайзером. В  model можно передать модель для уменьшения размерности. Тогда поиск ближайших соседей будет осуществляться в пространстве уменьшенной размерности. По умолчанию используются расстояния пространства исходной размерности.
+.nearest_neighbours(target, n, metric, model) - найдет n ближайших соседей (по метрике metric, по умолчанию метрика Евклида) элемента, subvalue которого равно target в векторном пространстве порожденном векторайзером. В model можно передать модель для уменьшения размерности. Тогда поиск ближайших соседей будет осуществляться в пространстве уменьшенной размерности. По умолчанию используются расстояния пространства исходной размерности.
+
+```python
+>>> corpus.nearest_neighbours(target='Авдеев.Варенька.1852', n=2) 
+```
+
 
 
 
