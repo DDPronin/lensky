@@ -145,7 +145,7 @@ $ pip install wordcloud
 ```python
 >>> from sklearn.feature_extraction.text import TfidfVectorizer
 
->>> tfidf = TfidfVectorizer(use_idf=true)
+>>> tfidf = TfidfVectorizer(use_idf=True)
 
 >>> corpus_tfidf = corp.vectorize(tfidf, replace=False)
 ```
