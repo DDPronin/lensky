@@ -150,9 +150,52 @@ $ pip install wordcloud
 >>> corpus_tfidf = corp.vectorize(tfidf, replace=False)
 ```
 
-.nearest_neighbours(target, n, metric, model) - найдет n ближайших соседей (по метрике metric, по умолчанию метрика Евклида) элемента, subvalue которого равно target в векторном пространстве порожденном векторайзером. В model можно передать модель для уменьшения размерности. Тогда поиск ближайших соседей будет осуществляться в пространстве уменьшенной размерности. По умолчанию используются расстояния пространства исходной размерности.
+.nearest_neighbours(target, n, metric, model) - найдет n ближайших соседей (по метрике metric, по умолчанию метрика Евклида) элемента, subvalue которого равно target в векторном пространстве, порожденном векторайзером. В model можно передать модель для уменьшения размерности. Тогда поиск ближайших соседей будет осуществляться в пространстве уменьшенной размерности. По умолчанию используются расстояния пространства исходной размерности.
+
 ```python
->>> corpus.nearest_neighbours(target='Авдеев.Варенька.1852', n=2) 
+>>> corpus_tfidf.nearest_neighbours(target='Авдеев.Варенька.1852', n=2) 
+```
+
+После векторизации .vectorize каждый элемент subvalue корпуса превращается в Vector - объект, обладающий своими методами:
+
+.get_principal_words(num) - получить num слов, отвечающих за самые значимые компоненты вектора векторизованного корпуса. Если не инициализировать num, то будут выведены все слова в порядке уменьшения величины компоненты. 
+
+```python
+>>> vector = corpus_tfidf.get([0, 0])
+>>> vector.get_principal_words(num=10)
+```
+
+get_principal_numbers(num) - получить num значений компонент вектора векторизованного корпуса. Если не инициализировать num, то будут выведены компоненты в порядке уменьшения.
+
+```python
+>>> vector = corpus_tfidf.get([0, 0])
+>>> vector.get_principal_numbers(num=10)
+```
+
+Функции для работы с векторами:
+
+vsum([vector1, vector2...]) - найдет векторную сумму списка [vector1, vector2...]
+
+```python
+>>> vector1 = corpus_tfidf.get([0, 0])
+>>> vector1 = corpus_tfidf.get([0, 1])
+>>> vsum([vector1, vector2])
+```
+
+vmean([vector1, vector2...]) - найдет среднее векторов списка [vector1, vector2...]
+
+```python
+>>> vector1 = corpus_tfidf.get([0, 0])
+>>> vector1 = corpus_tfidf.get([0, 1])
+>>> vmean([vector1, vector2])
+```
+
+vdif(vector1, vector2) - вычтет из vector1 vector2 (vector1-vector2)
+
+```python
+>>> vector1 = corpus_tfidf.get([0, 0])
+>>> vector1 = corpus_tfidf.get([0, 1])
+>>> vdif(vector1, vector2)
 ```
 
 
