@@ -215,7 +215,7 @@ model_fit(corpus_tfidf, mapper) # обучим ее на данных
 plot_by_subkeys(author_tfidf, 'Гоголь', mapper, figsize=(10, 10), dpi=250, point_size=14, legend_title='Произведения автора') # построение графика
 ```
 
-plot_interactive(corpus, model, data_key='key', data_subkey='subkey') - постройка анимированного графика по корпусу. Аргументы: corpus - векторизованный корпус (объект Corpus), model - предобученная модель для уменьшения размерности, data_key, data_subkey - подписи для легенды.
+plot_interactive(corpus, model, data_key, data_subkey) - постройка анимированного графика по корпусу. Аргументы: corpus - векторизованный корпус (объект Corpus), model - предобученная модель для уменьшения размерности, data_key, data_subkey - подписи для легенды.
 
 ```python
 import umap
