@@ -305,7 +305,7 @@ morph_plot(text, plot_type=['VERB'], window=500, title='Глаголы в про
 
 ![alt tag](https://github.com/DDPronin/lensky/blob/main/images/verb.png)
 
-plot_wordcloud(book, stopwords) - строит облако слов произведения. book - строка str, содержащая текст книги. Слова из списка stop_words будут удалены из текста.
+plot_wordcloud(book, stopwords) - строит облако слов произведения. text - строка str, содержащая текст книги. Слова из списка stop_words будут удалены из текста.
 
 ```python
 from Lensky.lensky import *
