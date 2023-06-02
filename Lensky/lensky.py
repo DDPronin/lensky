@@ -139,9 +139,9 @@ class Corpus:
         print('Done!')
 
     def tokenize(self, stop_words=None, replace=False):
-        stop_sym = ['.', '...', '?', '!', ',', ';', '—', '«', '»', '[', ']',
+        stop_sym = set(['.', '...', '?', '!', ',', ';', '—', '«', '»', '[', ']',
                     '"', '-', ':', '`', '\'', '\\', '/', '(', ')', '``', "''",
-                    '--', '*', '”' '“', '–', '..']
+                    '--', '*', '”' '“', '–', '..'])
         if stop_words != None:
             stop_sym += stop_words
         stop_sym = set(stop_sym)
@@ -232,8 +232,11 @@ class Corpus:
     def vectorize(self, vectorizer, replace=False):
         if type(self.get([0, 0])) == str:
             raise Exception("corpus subvalues should be lists like [word1, word2, ...]")
-        books = list(
-            itertools.chain.from_iterable(self.subvalues()))
+        # books = list(
+        #     itertools.chain.from_iterable(self.subvalues()))
+        books = []
+        for element in self.subvalues():
+            books.append(' '.join(element))
         # Vectorizing
         print('Vectorizer fitting...')
         vectorizer = vectorizer.fit(books)
